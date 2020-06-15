@@ -1,5 +1,4 @@
-version: 2
-
+version: 2.1
 jobs:
   build:
     docker:
@@ -20,5 +19,4 @@ jobs:
           command: 'cmake -H. -Bbuild'
       - run:
           name: Creating Binary Files
-          command: 'cmake --build build'
-      
+          command: 'cmake --build build
