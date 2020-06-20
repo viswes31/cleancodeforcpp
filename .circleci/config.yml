@@ -19,4 +19,4 @@ jobs:
           command: 'cmake -H. -Bbuild'
       - run:
           name: Creating Binary Files
-          command: 'cmake --build build
+          command: 'cmake --build build'
