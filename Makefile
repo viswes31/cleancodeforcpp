@@ -1,2 +1,2 @@
 all:
-	gcc -o dump hello.cpp
+	gcc -o dump *.cpp
