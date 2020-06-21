@@ -22,17 +22,23 @@ jobs:
             cp -a include/gtest /usr/include  
             cp *.a /usr/lib
       - run:
+          name: Install cppcheck
+          command: 'apt-get update && apt-get install -y cppcheck'
+      - run:
           name: Install pip
           command: 'apt-get update && apt-get install -y python-pip'
       - run:
           name: Install lizard
           command: 'pip install lizard'
       - run:
-          name: Cyclomatic Complexity Check
-          command: 'lizard'
-      - run:
-          name: Creating Build Files
+          name: Create Build Files
           command: 'make'
+      - run:
+          name: Static Analysis
+          command: 'cppcheck --enable=all --error-exitcode=1 .'
+      - run:
+          name: Cyclomatic Complexity Check
+          command: 'lizard --CCN 3'
       - run:
           name: Unit test
           command: './testcheck'
