@@ -1,11 +1,10 @@
 
+bool isInLimit(float value, float min, float max) {
+  return value >= min && value <= max;
+}
+
 bool vitalsAreOk(float bpm, float spo2, float respRate) {
-  if(bpm < 70 || bpm > 150) {
-    return false;
-  } else if(spo2 < 80) {
-    return false;
-  } else if(respRate < 30 || respRate > 60) {
-    return false;
-  }
-  return true;
+  return isInLimit(bpm, 70, 150) &&
+    isInLimit(spo2, 80, 100) &&
+    isInLimit(respRate, 30, 60);
 }
