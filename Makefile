@@ -1,2 +1,2 @@
 all:
-	gcc -o dump *.cpp
+	gcc -o testcheck *.cpp
