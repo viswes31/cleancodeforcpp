@@ -1,2 +1,2 @@
 
-bool vitalsAreOk(float bpm, float spo2 float respRate);
+bool vitalsAreOk(float bpm, float spo2, float respRate);
