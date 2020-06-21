@@ -12,6 +12,16 @@ jobs:
           name: Installing GCC
           command: 'apt-get update && apt-get install -y gcc g++'
       - run:
+          name: Install GTest
+          command: |
+            apt-get update && apt-get install -y libgtest-dev
+            apt-get install -y cmake
+            cd /usr/src/gtest
+            cmake CMakeLists.txt
+            make
+            cp -a include/gtest /usr/include  
+            cp *.a /usr/lib
+      - run:
           name: Install pip
           command: 'apt-get update && apt-get install -y python-pip'
       - run:
@@ -23,4 +33,6 @@ jobs:
       - run:
           name: Creating Build Files
           command: 'make'
-      
+      - run:
+          name: Unit test
+          command: './testcheck'

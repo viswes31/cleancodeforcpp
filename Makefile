@@ -1,2 +1,2 @@
 all:
-	gcc -o testcheck *.cpp
+	g++ -o testcheck *.cpp -lgtest -lpthread 
