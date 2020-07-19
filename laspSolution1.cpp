@@ -22,10 +22,10 @@ hide();
 centerPoint = newCenterPoint;
 show();
 }
-virtual void Shape::show() {
+virtual void show() {
 isVisible = true;
 }
-virtual void Shape::hide() {
+virtual void hide() {
 isVisible = false;
 }
 private:

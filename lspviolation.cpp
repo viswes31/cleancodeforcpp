@@ -1,3 +1,8 @@
+#include <iostream>
+
+using namespace std;
+
+
 class Point final {
 public:
 Point() : x { 5 }, y { 5 } { }
@@ -22,10 +27,10 @@ hide();
 centerPoint = newCenterPoint;
 show();
 }
-virtual void Shape::show() {
+virtual void show() {
 isVisible = true;
 }
-virtual void Shape::hide() {
+virtual void hide() {
 isVisible = false;
 }
 private:
@@ -73,6 +78,11 @@ public:
 //...
 };
 
+void client (Rectangle *ptr){
+
+cout<< ptr->getArea();
+
+}
 
 int main(){
 
@@ -90,6 +100,8 @@ Must I maybe put both parameters to the same value?
 What happens if I don’t?
 */
 square.setEdges(10, 20); // Uh oh! 
+
+client(new Square());
 
 
 
