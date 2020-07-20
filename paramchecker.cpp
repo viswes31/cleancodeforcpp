@@ -3,26 +3,17 @@
 
 bool checkIfBpmOutOfRange(float bpm)
 {
-  bool isBpmOutOfRange = false;
-  if(bpm < 70 || bpm > 150)
-    isBpmOutOfRange = true;
-  return isBpmOutOfRange;
+  return (bpm < 70 || bpm > 150);
 }
 
 bool checkIfSpoOutOfRange(float spo2)
 {
-  bool isSpoOutOfRange = false;
-  if(spo2 < 80)
-    isSpoOutOfRange = true;
-  return isSpoOutOfRange;
+  return (spo2 < 80);
 }
 
 bool checkIfRespRateOutOfRange(float respRate)
 {
-  bool isRespRateOutOfRange = false;
-  if(respRate < 30 || respRate > 60)
-    isRespRateOutOfRange = true;
-  return isRespRateOutOfRange;
+  return (respRate < 30 || respRate > 60);
 }
 
 bool vitalsAreOk(float bpm, float spo2, float respRate) {
