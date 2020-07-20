@@ -26,7 +26,7 @@ bool checkIfRespRateOutOfRange(float respRate)
 }
 
 bool vitalsAreOk(float bpm, float spo2, float respRate) {
-  return (checkIfBpmOutOfRange(bpm) || checkIfSpoOutOfRange(spo2) || checkIfRespRateOutOfRange(respRate));
+  return (checkIfBpmOutOfRange(bpm) && checkIfSpoOutOfRange(spo2) && checkIfRespRateOutOfRange(respRate));
 }
 /*
   if(bpm < 70 || bpm > 150) {
