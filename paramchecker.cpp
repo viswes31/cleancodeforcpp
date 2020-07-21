@@ -1,31 +1,9 @@
 
-
-
-bool checkIfBpmOutOfRange(float bpm)
+bool checkIfVitalOutOfRange(float vital, float minRange, float maxRange)
 {
-  return (bpm < 70 || bpm > 150);
-}
-
-bool checkIfSpoOutOfRange(float spo2)
-{
-  return (spo2 < 80);
-}
-
-bool checkIfRespRateOutOfRange(float respRate)
-{
-  return (respRate < 30 || respRate > 60);
+  return (vital < minRange || vital > maxRange);
 }
 
 bool vitalsAreOk(float bpm, float spo2, float respRate) {
-  return (checkIfBpmOutOfRange(bpm) ? false : (checkIfSpoOutOfRange(spo2) ? false : !checkIfRespRateOutOfRange(respRate)));
+  return (checkIfVitalOutOfRange(bpm, 70, 150) ? false : (checkIfSpoOutOfRange(spo2, 80, 100) ? false : !checkIfRespRateOutOfRange(respRate, 30, 60)));
 }
-/*
-  if(bpm < 70 || bpm > 150) {
-    return false;
-  } else if(spo2 < 80) {
-    return false;
-  } else if(respRate < 30 || respRate > 60) {
-    return false;
-  }
-  return true;
-}*/
