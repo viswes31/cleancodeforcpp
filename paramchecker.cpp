@@ -1,3 +1,6 @@
+#include <map>
+#include <vector>
+
 enum Vitals
 {
   BPM = 0,
@@ -10,7 +13,7 @@ struct vitalsRange
 {
   float minRange;
   float maxRange;
-} vitalRange[MAX_VITALS];
+} vitalRange[3];
 
 vitalsRange[BPM].minRange = 70;
 vitalsRange[BPM].maxRange = 70;
