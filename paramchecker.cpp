@@ -1,5 +1,4 @@
 #include "paramchecker.h"
-#include <vector>
 
 using namespace std;
 
