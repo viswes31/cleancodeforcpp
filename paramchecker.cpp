@@ -1,46 +1,93 @@
 #include "paramchecker.h"
+#include <vector>
 
-enum Vitals
+using namespace std;
+
+class Vital
 {
-  BPM = 0,
-  SPO2,
-  RESPRATE,
-  MAX_VITALS
+	float minRange;
+	float maxRange;
+	
+	public:
+	   virtual ~Vital(){}
+	   bool isVitalOk(float vital) 
+	   {
+	       cout << "\n is vital ok:"<<!((vital < getMinRange()) || (vital > getMaxRange()));
+	       return !((vital < getMinRange()) || (vital > getMaxRange()));
+	   }
+	   float getMinRange() { cout << "\nMinRange:" << minRange; return minRange; }
+	   float getMaxRange() { cout << "\nMaxRange:" << maxRange; return maxRange; }
+	   void setMinRange(float min) { minRange = min; }
+	   void setMaxRange(float max) { maxRange = max; }
 };
 
-struct vitalsRange
-{
-  float minRange;
-  float maxRange;
+class BPM:public Vital{
+
+	public:
+	BPM(){	
+	setMinRange(70);
+	setMaxRange(150);
+	}
+	
+	
+	virtual ~BPM(){}
 };
 
-struct vitalsRange vitalRange[3];
+class SPO2:public Vital{
 
-vitalRange[BPM].minRange = 70;
-vitalRange[BPM].maxRange = 70;
+	public:
+	SPO2(){	
+	setMinRange(80);
+	setMaxRange(100);
+	}
+	
+	virtual ~SPO2(){}
+};
 
-vitalRange[SPO2].minRange = 70;
-vitalRange[SPO2].maxRange = 70;
+class RESP:public Vital{
 
-vitalRange[RESPRATE].minRange = 70;
-vitalRange[RESPRATE].maxRange = 70;
+	public:
+	RESP(){	
+	setMinRange(30);
+	setMaxRange(60);
+	}
+	
+	virtual ~RESP(){}
+};
 
 
-bool checkIfVitalOutOfRange(float vital, float minRange, float maxRange)
+
+class ParamChecker
 {
-  return (vital < minRange || vital > maxRange);
-}
+	std::vector<Vital*> vitalList;
+	public:
+	ParamChecker()
+	{
+		Vital *bpmVital = new BPM();
+		Vital *SPO2Vital = new SPO2();
+		Vital *RESPVital = new RESP();
+		vitalList.push_back(bpmVital);
+		vitalList.push_back(SPO2Vital);
+		vitalList.push_back(RESPVital);
+	}
+	bool checkIfVitalOutOfRange(std::vector<float> patientVitals)
+	{
+		std::vector<Vital*>::iterator vitalItr = vitalList.begin();
+		std::vector<float>::iterator patientVitalItr = patientVitals.begin();
+		bool isVitalOutOfRange = false;
+		for (; vitalItr!=vitalList.end() ; ++vitalItr, ++patientVitalItr)
+		{
+			if(!(*vitalItr)->isVitalOk(*patientVitalItr))
+			{
+				isVitalOutOfRange = true;
+				break;
+			}
+		}
+		return isVitalOutOfRange;
+	}
+};
 
 bool vitalsAreOk(std::vector<float> inputVitals) {
-  bool areVitalsOk = true;
-  for(int count=0; count < MAX_VITALS; ++count)
-  {
-    if(checkIfVitalOutOfRange(inputVitals[count], vitalRange[count].minRange, vitalRange[count].maxRange) == false)
-    {
-      areVitalsOk = false;
-      break;
-    }      
-  }
-  
-  return areVitalsOk;
+  ParamChecker paramchecker;
+  return !paramchecker.checkIfVitalOutOfRange(inputVitals);
 }
