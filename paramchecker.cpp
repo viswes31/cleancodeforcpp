@@ -12,7 +12,7 @@ struct vitalsRange
 {
   float minRange;
   float maxRange;
-} 
+};
 
 struct vitalsRange vitalRange[3];
 
