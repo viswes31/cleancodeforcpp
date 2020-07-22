@@ -6,7 +6,7 @@ enum Vitals
   SPO2,
   RESPRATE,
   MAX_VITALS
-}
+};
 
 struct vitalsRange
 {
