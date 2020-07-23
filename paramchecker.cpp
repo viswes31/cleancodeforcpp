@@ -8,7 +8,7 @@ class Vital
 	float maxRange;
 	
 	public:
-	   Vital() {}
+	   Vital() {minRange=0; maxRange=0;}
 	   virtual ~Vital(){}
 	   bool isVitalOk(float vital) 
 	   {
