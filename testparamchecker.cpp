@@ -6,7 +6,7 @@ TEST(VitalsTest, BPM) {
     vitalList.push_back(100);
     vitalList.push_back(100);
     vitalList.push_back(50);
-    ASSERT_EQ(true, vitalsAreOk(100, 100, 50));
+    ASSERT_EQ(true, vitalsAreOk(vitalList));
 }
  
 TEST(VitalsTest, SPO2) {

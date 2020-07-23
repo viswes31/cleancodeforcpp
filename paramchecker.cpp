@@ -11,11 +11,10 @@ class Vital
 	   virtual ~Vital(){}
 	   bool isVitalOk(float vital) 
 	   {
-	       cout << "\n is vital ok:"<<!((vital < getMinRange()) || (vital > getMaxRange()));
 	       return !((vital < getMinRange()) || (vital > getMaxRange()));
 	   }
-	   float getMinRange() { cout << "\nMinRange:" << minRange; return minRange; }
-	   float getMaxRange() { cout << "\nMaxRange:" << maxRange; return maxRange; }
+	   float getMinRange() {  return minRange; }
+	   float getMaxRange() {  return maxRange; }
 	   void setMinRange(float min) { minRange = min; }
 	   void setMaxRange(float max) { maxRange = max; }
 };
